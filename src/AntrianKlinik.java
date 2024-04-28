@@ -1,62 +1,35 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-
-public class AntrianKlinik {
-    private Queue<String> antrianPasien;
+class AntrianKlinik {
+    private boolean[] tanggalTersedia = new boolean[31];
 
     public AntrianKlinik() {
-        antrianPasien = new LinkedList<>();
-    }
-
-    public void antrianPasien(String namaPasien) {
-        antrianPasien.add(namaPasien);
-        System.out.println(namaPasien + " telah ditambahkan ke dalam antrian.");
-    }
-
-    public void keluarantrianPasien() {
-        if (!antrianPasien.isEmpty()) {
-            String pasienBerikutnya = antrianPasien.poll();
-            System.out.println("Pasien selanjutnya yang akan dilayani: " + pasienBerikutnya);
-        } else {
-            System.out.println("Antrian kosong. Tidak ada pasien yang keluar dari antrian.");
+        for (int i = 0; i < tanggalTersedia.length; i++) {
+            tanggalTersedia[i] = true;
         }
     }
 
-    public void tampilAntrian() {
-        System.out.println("Antrian saat ini:");
-        for (String pasien : antrianPasien) {
-            System.out.println(pasien);
-        }
-    }
-
-    public void antrianSelesai() {
-        if (antrianPasien.isEmpty()) {
-            System.out.println("Antrian telah selesai. Semua pasien telah dilayani.");
-        } else {
-            System.out.println("Antrian belum selesai. Masih ada pasien dalam antrian.");
-        }
-    }
-
-    public static void main(String[] args) {
-        AntrianKlinik antrianKlinik = new AntrianKlinik();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Masukkan nama pasien atau ketik 'selesai' untuk keluar:");
-            String input = scanner.nextLine();
-
-            if (input.equalsIgnoreCase("selesai")) {
-                break;
+    public void lihatKetersediaanTanggal() {
+        System.out.println("Ketersediaan tanggal:");
+        for (int i = 0; i < tanggalTersedia.length; i++) {
+            if (tanggalTersedia[i]) {
+                System.out.println((i + 1) + ". Tersedia");
             } else {
-                antrianKlinik.antrianPasien(input);
+                System.out.println((i + 1) + ". Tidak Tersedia");
             }
         }
+    }
 
-        antrianKlinik.tampilAntrian();
-        antrianKlinik.keluarantrianPasien();
-        antrianKlinik.antrianSelesai();
-
-        scanner.close();
+    public boolean reservasiTanggal(int tanggal) {
+        if (tanggal >= 1 && tanggal <= 31) {
+            if (tanggalTersedia[tanggal - 1]) {
+                tanggalTersedia[tanggal - 1] = false;
+                System.out.println("Reservasi untuk tanggal " + tanggal + " berhasil.");
+                return true;
+            } else {
+                System.out.println("Tanggal " + tanggal + " sudah dipesan.");
+            }
+        } else {
+            System.out.println("Tanggal tidak valid.");
+        }
+        return false;
     }
 }
