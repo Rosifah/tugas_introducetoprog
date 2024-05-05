@@ -1,4 +1,6 @@
-class AntrianKlinik {
+package com.clinic.services;
+
+public class AntrianKlinik {
     private boolean[] tanggalTersedia = new boolean[31];
 
     public AntrianKlinik() {

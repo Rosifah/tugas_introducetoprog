@@ -1,6 +1,8 @@
+package com.clinic.services;
+
 import java.util.function.Consumer;
 
-class Perawatan {
+public class Perawatan {
     private static final String[] kodePerawatan = {"a", "b", "c", "d"};
     private static final String[] namaPerawatan = {
             "Facial Basic --- Rp 125.000",
@@ -11,7 +13,7 @@ class Perawatan {
     private static final double[] hargaPerawatan = {125000.0, 200000.0, 285000.0, 565000.0};
 
     public static void printDaftarPerawatan() {
-        System.out.println("Daftar Perawatan:");
+        System.out.println("Daftar com.clinic.services.Perawatan:");
         Consumer<Integer> printPerawatan = index -> System.out.println(kodePerawatan[index] + ". " + namaPerawatan[index]);
         for (int i = 0; i < kodePerawatan.length; i++) {
             printPerawatan.accept(i);
