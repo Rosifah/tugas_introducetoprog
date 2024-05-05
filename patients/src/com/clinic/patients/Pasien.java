@@ -26,5 +26,12 @@ public sealed class Pasien permits PasienMember {
     public static boolean cekPasienBaru(List<String> daftarPasien, String nama) {
         return !daftarPasien.contains(nama);
     }
-}
 
+    public void cekTipePasien() {
+        if (this instanceof PasienMember) {
+            System.out.println("Pasien adalah instance dari PasienMember.");
+        } else {
+            System.out.println("Pasien bukan instance dari PasienMember.");
+        }
+    }
+}
