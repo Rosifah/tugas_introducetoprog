@@ -1,5 +1,9 @@
+package com.clinic.services;
+
+import com.clinic.patients.Pasien;
 import java.util.Scanner;
-class Pembayaran {
+
+public class Pembayaran {
     public static void lanjutKeMetodePembayaran(Pasien pasien, double biayaPembayaran) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nPilih metode pembayaran:");
@@ -10,20 +14,11 @@ class Pembayaran {
         System.out.print("Pilihan Anda: ");
         int pilihanPembayaran = scanner.nextInt();
         switch (pilihanPembayaran) {
-            case 1:
-                bayarTunai(pasien, biayaPembayaran);
-                break;
-            case 2:
-                bayarKartuDebit(pasien, biayaPembayaran);
-                break;
-            case 3:
-                bayarKartuKredit(pasien, biayaPembayaran);
-                break;
-            case 4:
-                bayarTransferBank(pasien, biayaPembayaran);
-                break;
-            default:
-                System.out.println("Pilihan tidak valid!");
+            case 1 -> bayarTunai(pasien, biayaPembayaran);
+            case 2 -> bayarKartuDebit(pasien, biayaPembayaran);
+            case 3 -> bayarKartuKredit(pasien, biayaPembayaran);
+            case 4 -> bayarTransferBank(pasien, biayaPembayaran);
+            default -> System.out.println("Pilihan tidak valid!");
         }
         scanner.close();
     }
@@ -35,7 +30,6 @@ class Pembayaran {
         System.out.println("Biaya Pembayaran: Rp" + biayaPembayaran);
         System.out.println("Terima kasih atas pembayarannya!");
     }
-
     private static void bayarKartuDebit(Pasien pasien, double biayaPembayaran) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nPembayaran Kartu Debit");

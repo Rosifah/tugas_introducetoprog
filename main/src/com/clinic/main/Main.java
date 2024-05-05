@@ -1,3 +1,8 @@
+package com.clinic.main;
+
+import com.clinic.patients.*;
+import com.clinic.services.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

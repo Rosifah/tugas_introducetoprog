@@ -1,8 +1,8 @@
-import java.util.Scanner;
+package com.clinic.patients;
 
 import java.util.List;
 
-class Pasien {
+public sealed class Pasien permits PasienMember {
     private String nama;
     private String nomorRegistrasi;
 
@@ -27,3 +27,4 @@ class Pasien {
         return !daftarPasien.contains(nama);
     }
 }
+

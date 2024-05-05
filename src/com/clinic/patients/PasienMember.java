@@ -1,4 +1,6 @@
-public class PasienMember extends Pasien {
+package com.clinic.patients;
+
+public final class PasienMember extends Pasien {
     private int idMember;
 
     public PasienMember(String nama, int idMember) {
